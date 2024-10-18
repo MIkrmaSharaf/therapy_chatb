@@ -1,3 +1,4 @@
+
 import streamlit as st
 from groq import Groq
 
@@ -155,7 +156,8 @@ if st.session_state.system_prompt:
 
     # Input box for the client's message
     user_input = st.text_input("You:")
-    
+
+    # Handle the sending of the user's message
     if st.button("Send"):
         if user_input:
             # Append user message to the conversation history
@@ -166,6 +168,5 @@ if st.session_state.system_prompt:
             
             # Append bot response to the conversation history
             st.session_state.conversation_history.append({"role": "assistant", "content": bot_response})
-            
-            # Refresh the page to display the updated conversation
-            st.experimental_rerun()
+
+# No need to use st.experimental_rerun() anymore, as Streamlit automatically updates the display
